@@ -1,3 +1,5 @@
+// entry point of the backend application
+
 require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
@@ -10,6 +12,14 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+
+// importing routes
+const tourPackageRoutes = require("./route/tour-package-routes");
+const packageBookingRoutes = require("./route/package-booking-routes");
+
+// mounting routes
+app.use("/api/package", tourPackageRoutes); // [ http://localhost:5555/api/package/... ]
+app.use("/api/booking", packageBookingRoutes); // [ http://localhost:5555/api/booking/... ]
 
 // home route "/" for the backend
 app.get("/", (_req, res) => {

@@ -38,6 +38,21 @@ const packageBookingSchema = new mongoose.Schema({
       },
     },
   ],
+  createdAt: {
+    type: String,
+    default: () => {
+      const date = new Date();
+      return date.toLocaleString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short",
+      });
+    },
+  },
 });
 
 module.exports = mongoose.model("PackageBooking", packageBookingSchema);
