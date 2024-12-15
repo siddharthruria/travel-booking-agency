@@ -16,10 +16,12 @@ app.use(express.json());
 // importing routes
 const tourPackageRoutes = require("./route/tour-package-routes");
 const packageBookingRoutes = require("./route/package-booking-routes");
+const adminRoutes = require("./route/admin-routes");
 
 // mounting routes
 app.use("/api/package", tourPackageRoutes); // [ http://localhost:5555/api/package/... ]
 app.use("/api/booking", packageBookingRoutes); // [ http://localhost:5555/api/booking/... ]
+app.use("/api/admin", adminRoutes); // [ http://localhost:5555/api/admin/... ]
 
 // home route "/" for the backend
 app.get("/", (_req, res) => {
