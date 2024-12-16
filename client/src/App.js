@@ -11,32 +11,47 @@ import Invoices from "./pages/Invoices";
 import SingleBooking from "./pages/SingleBooking";
 import SinglePackage from "./pages/SinglePackage";
 import TourPackages from "./pages/TourPackages";
+import PackageProvider from "./context/PackageContext";
+import CreatePackage from "./pages/CreatePackage";
+import UpdatePackage from "./pages/UpdatePackage";
 
 function App() {
   return (
     <>
       <Router>
         <AdminProvider>
-          <Navbar />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/booking" element={<CreateBooking />} />
-            <Route
-              exact
-              path="/booking/allBookings"
-              element={<GetBookings />}
-            />
-            <Route exact path="/invoices" element={<Invoices />} />
-            <Route exact path="/booking/:id" element={<SingleBooking />} />
-            <Route exact path="/package/:id" element={<SinglePackage />} />
-            <Route
-              exact
-              path="/package/allPackages"
-              element={<TourPackages />}
-            />
-            <Route exact path="/admin/login" element={<AdminLogin />} />
-            <Route exact path="/admin" element={<AdminControl />} />
-          </Routes>
+          <PackageProvider>
+            <Navbar />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/booking" element={<CreateBooking />} />
+              <Route
+                exact
+                path="/booking/allBookings"
+                element={<GetBookings />}
+              />
+              <Route exact path="/invoices" element={<Invoices />} />
+              <Route exact path="/booking/:id" element={<SingleBooking />} />
+              <Route exact path="/package/:id" element={<SinglePackage />} />
+              <Route
+                exact
+                path="/package/allPackages"
+                element={<TourPackages />}
+              />
+              <Route exact path="/admin/login" element={<AdminLogin />} />
+              <Route exact path="/admin" element={<AdminControl />} />
+              <Route
+                exact
+                path="/admin/package/create"
+                element={<CreatePackage />}
+              />
+              <Route
+                exact
+                path="/admin/package/update"
+                element={<UpdatePackage />}
+              />
+            </Routes>
+          </PackageProvider>
         </AdminProvider>
       </Router>
     </>

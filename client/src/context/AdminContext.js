@@ -14,7 +14,7 @@ const AdminProvider = ({ children }) => {
   const login = (username, password) => {
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       setIsAdmin(true);
-      navigate("/");
+      navigate("/admin");
       return true;
     } else {
       setIsAdmin(false);

@@ -39,7 +39,7 @@ const Navbar = () => {
                   style={{ marginLeft: "1.2vw" }}
                   className="nav-link"
                   aria-current="page"
-                  to="/"
+                  to="/package/allPackages"
                 >
                   tour-packages
                 </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
                   style={{ marginLeft: "1.2vw" }}
                   className="nav-link"
                   aria-current="page"
-                  to="/"
+                  to="/booking/allBookings"
                 >
                   your-bookings
                 </Link>
@@ -59,7 +59,7 @@ const Navbar = () => {
                   style={{ marginLeft: "1.2vw" }}
                   className="nav-link"
                   aria-current="page"
-                  to="/"
+                  to="/invoices"
                 >
                   invoices
                 </Link>
@@ -87,13 +87,13 @@ const Navbar = () => {
                       aria-current="page"
                       to="/admin"
                     >
-                      admin
+                      admin-panel
                     </Link>
                   </li>
                   <div>
                     <Link
                       to="/admin/login"
-                      style={{ marginLeft: "675px", textDecoration: "none" }}
+                      style={{ marginLeft: "625px", textDecoration: "none" }}
                       type="button"
                       className="buttons btn btn-primary"
                       onClick={() => {

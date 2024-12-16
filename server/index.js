@@ -3,14 +3,29 @@
 require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
+const cors = require("cors");
 
 const PORT = process.env.PORT;
 
 const app = express();
+const allowedOrigins = ["http://localhost:3000"];
 
 // function for connecting the server to the mongodb database through mongoose
 connectDB();
 
+// allowing CORS to communitcate between /client and /server
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("not allowed by cors"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // importing routes

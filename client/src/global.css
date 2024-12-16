@@ -1,3 +1,39 @@
 body {
   font-family: "Arial", "sans-serif";
 }
+
+.admin-panel {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-controls {
+  padding: 50px;
+}
+
+.admin-controls-item {
+  display: flex;
+  align-items: center;
+}
+
+.packagesList {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 100px;
+  /* margin-left: 200px; */
+  margin-top: 20px;
+  text-align: center;
+  /* padding: 20px; */
+}
+
+.package-image {
+  width: 250px;
+  height: 250px;
+}
+
+.package-description {
+  font-size: 14px;
+  color: #383131;
+  margin: 0 10px 10px;
+}
