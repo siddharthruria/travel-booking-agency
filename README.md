@@ -18,7 +18,7 @@ A simple full stack web application which helps you to create bookings for tour 
 - **Admin Panel**: Are you the admin? Login and manage the entire website!.
 
 
-## Setting up Environment Variables
+## Install the project in your local machine
 
 - To run this project locally, follow these steps to configure your environment variables:
 
