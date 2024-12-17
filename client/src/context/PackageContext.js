@@ -15,7 +15,7 @@ const PackageProvider = ({ children }) => {
   const createPackageRequest = async (tourPackageData) => {
     try {
       const response = await fetch(
-        "https://travel-agency-server.onrender.com/api/admin/package/create",
+        "https://travel-agency-server-mk0z.onrender.com/api/admin/package/create",
         {
           method: "POST",
           headers: {
@@ -41,7 +41,7 @@ const PackageProvider = ({ children }) => {
 
   const fetchAllPackagesRequest = async () => {
     try {
-      const response = await fetch("https://travel-agency-server.onrender.com/api/package/all", {
+      const response = await fetch("https://travel-agency-server-mk0z.onrender.com/api/package/all", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const PackageProvider = ({ children }) => {
 
   const fetchSpecificPackageRequest = async (id) => {
     try {
-      const response = await fetch(`https://travel-agency-server.onrender.com/api/package/${id}`, {
+      const response = await fetch(`https://travel-agency-server-mk0z.onrender.com/api/package/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const PackageProvider = ({ children }) => {
   const updatePackageRequest = async (id, updatedData) => {
     try {
       const response = await fetch(
-        `https://travel-agency-server.onrender.com/api/admin/package/${id}`,
+        `https://travel-agency-server-mk0z.onrender.com/api/admin/package/${id}`,
         {
           method: "PUT",
           headers: {
@@ -115,7 +115,7 @@ const PackageProvider = ({ children }) => {
   const deletePackageRequest = async (id) => {
     try {
       const response = await fetch(
-        `https://travel-agency-server.onrender.com/api/admin/package/${id}`,
+        `https://travel-agency-server-mk0z.onrender.com/api/admin/package/${id}`,
         {
           method: "DELETE",
           headers: {
