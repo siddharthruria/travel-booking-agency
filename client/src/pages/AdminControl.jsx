@@ -24,7 +24,6 @@ const AdminControl = () => {
 
       <div className="d-flex admin-panel container">
         <div className="admin-controls">
-          <div className="admin-controls-item"></div>
           <div className="admin-controls-item">
             <h5>create a new tour package</h5>
             <Link

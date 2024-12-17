@@ -116,4 +116,39 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// ------------------------------- ROUTE 4 -------------------------------
+
+// route (/api/booking/invoice/:id)
+
+// GET -> get invoice for a booking
+
+router.get("/invoice/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const invoice = await BookingInvoice.findOne({ booking: id }).populate({
+      path: "booking",
+      populate: { path: "package" },
+    });
+
+    if (!invoice) {
+      return res.status(404).json({
+        success: false,
+        error: "invoice not found for this booking.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      invoice,
+    });
+  } catch (error) {
+    console.error("error fetching invoice:", error);
+    res.status(500).json({
+      success: false,
+      error: "internal server error :/",
+    });
+  }
+});
+
 module.exports = router;

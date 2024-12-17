@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AdminContext } from "../context/AdminContext";
 
 const SinglePackage = () => {
   const { id } = useParams();
   const [packageDetails, setPackageDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { isAdmin } = useContext(AdminContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPackageDetails = async () => {
@@ -16,7 +19,7 @@ const SinglePackage = () => {
           setPackageDetails(data.package);
         }
       } catch (error) {
-        console.error("failed to fetch package details")
+        console.error("failed to fetch package details");
       } finally {
         setLoading(false);
       }
@@ -35,9 +38,12 @@ const SinglePackage = () => {
         alt={packageDetails?.title}
         className="img-fluid mb-3"
       />
-      <p><strong>description:</strong> {packageDetails.description}</p>
-      <p><strong>price per person:</strong> Rs. {packageDetails?.pricePerPerson}</p>
-
+      <p>
+        <strong>description:</strong> {packageDetails.description}
+      </p>
+      <p>
+        <strong>price per person:</strong> Rs. {packageDetails?.pricePerPerson}
+      </p>
       <h3>available dates:</h3>
       <ul>
         {packageDetails?.availableDates.map((date, index) => (
@@ -47,6 +53,21 @@ const SinglePackage = () => {
           </li>
         ))}
       </ul>
+      {!isAdmin && (
+        <>
+          <div>
+            <button
+              onClick={() => {
+                navigate(`/${packageDetails._id}/booking`);
+              }}
+              className="btn btn-primary"
+              style={{ marginTop: "0.5vw" }}
+            >
+              create a booking
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

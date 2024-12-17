@@ -14,6 +14,7 @@ import TourPackages from "./pages/TourPackages";
 import PackageProvider from "./context/PackageContext";
 import CreatePackage from "./pages/CreatePackage";
 import UpdatePackage from "./pages/UpdatePackage";
+import BookingProvider from "./context/BookingContext";
 
 function App() {
   return (
@@ -21,36 +22,38 @@ function App() {
       <Router>
         <AdminProvider>
           <PackageProvider>
-            <Navbar />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/booking" element={<CreateBooking />} />
-              <Route
-                exact
-                path="/booking/allBookings"
-                element={<GetBookings />}
-              />
-              <Route exact path="/invoices" element={<Invoices />} />
-              <Route exact path="/booking/:id" element={<SingleBooking />} />
-              <Route exact path="/package/:id" element={<SinglePackage />} />
-              <Route
-                exact
-                path="/package/allPackages"
-                element={<TourPackages />}
-              />
-              <Route exact path="/admin/login" element={<AdminLogin />} />
-              <Route exact path="/admin" element={<AdminControl />} />
-              <Route
-                exact
-                path="/admin/package/create"
-                element={<CreatePackage />}
-              />
-              <Route
-                exact
-                path="/admin/package/:id/update"
-                element={<UpdatePackage />}
-              />
-            </Routes>
+            <BookingProvider>
+              <Navbar />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/:id/booking" element={<CreateBooking />} />
+                <Route
+                  exact
+                  path="/booking/allBookings"
+                  element={<GetBookings />}
+                />
+                <Route exact path="/invoice/:id" element={<Invoices />} />
+                <Route exact path="/booking/:id" element={<SingleBooking />} />
+                <Route exact path="/package/:id" element={<SinglePackage />} />
+                <Route
+                  exact
+                  path="/package/allPackages"
+                  element={<TourPackages />}
+                />
+                <Route exact path="/admin/login" element={<AdminLogin />} />
+                <Route exact path="/admin" element={<AdminControl />} />
+                <Route
+                  exact
+                  path="/admin/package/create"
+                  element={<CreatePackage />}
+                />
+                <Route
+                  exact
+                  path="/admin/package/:id/update"
+                  element={<UpdatePackage />}
+                />
+              </Routes>
+            </BookingProvider>
           </PackageProvider>
         </AdminProvider>
       </Router>

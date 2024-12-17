@@ -2,6 +2,26 @@ body {
   font-family: "Arial", "sans-serif";
 }
 
+.home1 {
+  text-align: center;
+  padding-top: 50px !important;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  font-family: Arial, sans-serif;
+}
+
+.home2 {
+  display: grid;
+  align-items: center;
+  padding-left: 20px;
+  padding: 45px !important;
+  font-family: Arial, sans-serif;
+}
+
+.list-item {
+  font-size: 14px;
+}
+
 .admin-panel {
   justify-content: center;
   flex-direction: column;
@@ -17,6 +37,17 @@ body {
 }
 
 .packagesList {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 100px;
+  /* margin-left: 200px; */
+  margin-top: 20px;
+  text-align: center;
+  /* padding: 20px; */
+}
+
+.bookingsList {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

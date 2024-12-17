@@ -54,16 +54,6 @@ const Navbar = () => {
                   your-bookings
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  style={{ marginLeft: "1.2vw" }}
-                  className="nav-link"
-                  aria-current="page"
-                  to="/invoices"
-                >
-                  invoices
-                </Link>
-              </li>
               {!isAdmin && (
                 <>
                   <li className="nav-item">

@@ -33,7 +33,7 @@ const packageBookingSchema = new mongoose.Schema({
         required: true,
       },
       endDate: {
-        type: String,
+        type: Date,
         required: true,
       },
     },
