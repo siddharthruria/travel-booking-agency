@@ -10,7 +10,7 @@ const PORT = process.env.PORT;
 const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://travel-agency-client.onrender.com",
+  "https://travel-agency-client-t39l.onrender.com",
 ];
 
 // function for connecting the server to the mongodb database through mongoose
