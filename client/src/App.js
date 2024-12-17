@@ -47,7 +47,7 @@ function App() {
               />
               <Route
                 exact
-                path="/admin/package/update"
+                path="/admin/package/:id/update"
                 element={<UpdatePackage />}
               />
             </Routes>

@@ -1,10 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useSnackbar } from "notistack";
-import { AdminContext } from "../context/AdminContext";
 import { PackageContext } from "../context/PackageContext";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePackage = () => {
-  const { createPackageRequest } = useContext(PackageContext);
+  const { id } = useParams();
+  const { fetchSpecificPackageRequest, specificPackage, updatePackageRequest } =
+    useContext(PackageContext);
+  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,6 +16,23 @@ const UpdatePackage = () => {
     { startDate: "", endDate: "" },
   ]);
   const [image, setImage] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchSpecificPackageRequest(id);
+    };
+    fetchData();
+  }, [id, fetchSpecificPackageRequest]);
+
+  useEffect(() => {
+    if (specificPackage) {
+      setTitle(specificPackage.title);
+      setDescription(specificPackage.description);
+      setPricePerPerson(specificPackage.pricePerPerson);
+      setAvailableDates(specificPackage.availableDates);
+      setImage(specificPackage.image);
+    }
+  }, [specificPackage]);
 
   const handleDateChange = (index, field, value) => {
     const updatedDates = [...availableDates];
@@ -32,21 +52,19 @@ const UpdatePackage = () => {
   const handleSubmitFunction = async (e) => {
     e.preventDefault();
     try {
-      createPackageRequest({
+      updatePackageRequest(id, {
         title,
         description,
         pricePerPerson,
-        availableDates: availableDates.map((date) => ({
-          startDate: new Date(date.startDate),
-          endDate: new Date(date.endDate),
-        })),
+        availableDates,
         image,
       });
-      enqueueSnackbar("new tour package created successfully :)", {
+      enqueueSnackbar("successfully updated tour package details", {
         variant: "success",
       });
+      navigate("");
     } catch (error) {
-      enqueueSnackbar("error creating new tour package :/", {
+      enqueueSnackbar("error updating the tour package details :/", {
         variant: "error",
       });
       console.error(error.message);
@@ -56,7 +74,7 @@ const UpdatePackage = () => {
   return (
     <div className="container position-relative">
       <h2 className="my-3 position-absolute start-50 translate-middle">
-        create a tour package
+        update the tour package
       </h2>
       <form className="py-5 my-4" onSubmit={handleSubmitFunction}>
         <div className="mb-3">
@@ -68,7 +86,7 @@ const UpdatePackage = () => {
             className="form-control"
             id="title"
             name="title"
-            value={title}
+            value={"" || title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
@@ -82,7 +100,7 @@ const UpdatePackage = () => {
             className="form-control"
             id="description"
             name="description"
-            value={description}
+            value={description || ""}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
@@ -96,7 +114,7 @@ const UpdatePackage = () => {
             className="form-control"
             id="pricePerPerson"
             name="pricePerPerson"
-            value={pricePerPerson}
+            value={pricePerPerson || 0}
             onChange={(e) => setPricePerPerson(e.target.value)}
             min="0"
             required
@@ -109,7 +127,7 @@ const UpdatePackage = () => {
               <input
                 type="date"
                 className="form-control me-2"
-                value={date.startDate}
+                value={date.startDate || ""}
                 onChange={(e) =>
                   handleDateChange(index, "startDate", e.target.value)
                 }
@@ -118,7 +136,7 @@ const UpdatePackage = () => {
               <input
                 type="date"
                 className="form-control me-2"
-                value={date.endDate}
+                value={date.endDate || ""}
                 onChange={(e) =>
                   handleDateChange(index, "endDate", e.target.value)
                 }
@@ -152,7 +170,7 @@ const UpdatePackage = () => {
             className="form-control"
             id="image"
             name="image"
-            value={image}
+            value={image || ""}
             onChange={(e) => setImage(e.target.value)}
             required
           />

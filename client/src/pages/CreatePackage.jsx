@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useSnackbar } from "notistack";
-import { AdminContext } from "../context/AdminContext";
 import { PackageContext } from "../context/PackageContext";
 
 const CreatePackage = () => {

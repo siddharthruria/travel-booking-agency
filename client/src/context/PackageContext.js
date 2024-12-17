@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 
@@ -73,6 +73,7 @@ const PackageProvider = ({ children }) => {
       const responseData = await response.json();
       if (response.ok) {
         setSpecificPackage(responseData.package);
+        console.log(specificPackage);
       } else {
         return console.error("error fetching the package :/");
       }
@@ -103,14 +104,8 @@ const PackageProvider = ({ children }) => {
             : packageItem
         );
         setPackages(updatedPackages);
-        enqueueSnackbar("tour package details updated successfully :)", {
-          variant: "success",
-        });
       }
     } catch (error) {
-      enqueueSnackbar("error updating tour package details :/", {
-        variant: "error",
-      });
       return console.error("error updating the package :/");
     }
   };
@@ -146,19 +141,7 @@ const PackageProvider = ({ children }) => {
       return console.error("error deleting the package :/");
     }
   };
-
-  useEffect(() => {
-    fetchAllPackagesRequest();
-  }, [packages]);
-
-  useEffect(
-    (id) => {
-      if (specificPackage) {
-        fetchSpecificPackageRequest(id);
-      }
-    },
-    [specificPackage]
-  );
+  
 
   return (
     <PackageContext.Provider

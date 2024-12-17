@@ -1,21 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PackageContext } from "../context/PackageContext";
 import { AdminContext } from "../context/AdminContext";
-const { useSnackbar } = require("notistack");
 
 const AdminControl = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const { isAdmin } = useContext(AdminContext);
   const navigate = useNavigate();
-  const {
-    packages,
-    createPackageRequest,
-    specificPackage,
-    setSpecificPackage,
-    updatePackageRequest,
-    deletePackageRequest,
-  } = useContext(PackageContext);
+  const { packages, deletePackageRequest } = useContext(PackageContext);
+  const { fetchAllPackagesRequest } = useContext(PackageContext);
+  fetchAllPackagesRequest();
 
   if (!isAdmin) {
     navigate("/admin/login");
@@ -24,9 +17,9 @@ const AdminControl = () => {
 
   return (
     <>
-      <h3 style={{ marginLeft: "575px", padding: "20px" }}>
-        <b>welcome to the admin panel</b>
-      </h3>
+      <h2 style={{ marginLeft: "575px", padding: "20px" }}>
+        welcome to the admin panel
+      </h2>
       <h4 style={{ padding: "20px" }}>all tour packages</h4>
 
       <div className="d-flex admin-panel container">
@@ -71,7 +64,7 @@ const AdminControl = () => {
               <div className="package-actions">
                 <button
                   onClick={() => {
-                    navigate("/admin/package/update");
+                    navigate(`/admin/package/${packageItem._id}/update`);
                   }}
                   className="btn btn-warning"
                 >
@@ -85,13 +78,15 @@ const AdminControl = () => {
                   delete
                 </button>
               </div>
-              <a
-                href="/"
+              <button
+                onClick={() => {
+                  navigate(`/package/${packageItem._id}`);
+                }}
                 className="btn btn-primary"
                 style={{ marginTop: "0.5vw" }}
               >
                 open details
-              </a>
+              </button>
             </div>
           </div>
         ))}
