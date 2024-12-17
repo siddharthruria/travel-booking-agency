@@ -11,7 +11,7 @@ const BookingProvider = ({ children }) => {
 
   const createBooking = async (details) => {
     try {
-      const response = await fetch("http://localhost:5555/api/booking/", {
+      const response = await fetch("https://travel-agency-server.onrender.com/api/booking/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const BookingProvider = ({ children }) => {
   const fetchAllBookings = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5555/api/booking/yourBookings",
+        "https://travel-agency-server.onrender.com/api/booking/yourBookings",
         {
           method: "GET",
           headers: {
@@ -59,7 +59,7 @@ const BookingProvider = ({ children }) => {
   const fetchInvoice = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5555/api/booking/invoice/${id}`,
+        `https://travel-agency-server.onrender.com/api/booking/invoice/${id}`,
         {
           method: "GET",
           headers: {

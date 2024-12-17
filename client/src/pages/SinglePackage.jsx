@@ -12,7 +12,7 @@ const SinglePackage = () => {
   useEffect(() => {
     const fetchPackageDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5555/api/package/${id}`);
+        const response = await fetch(`https://travel-agency-server.onrender.com/api/package/${id}`);
         const data = await response.json();
 
         if (response.ok) {

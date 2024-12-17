@@ -8,7 +8,10 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 
 const app = express();
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://travel-agency-client.onrender.com",
+];
 
 // function for connecting the server to the mongodb database through mongoose
 connectDB();
