@@ -31,44 +31,41 @@ A simple full stack web application which helps you to create bookings for tour 
    ```bash
    cd travel-booking-agency
    ```
-   
-3. Create a .env file here
+3. Navigate to the project server folder:
    ```bash
-   touch .env
+   cd server
    ```
    
-4. Add the following variables to your .env file: Open the .env file in your preferred text editor and add the following:
+4. Create a .env file here
+   
+5. Add the following variables to your .env file: Open the .env file in your preferred text editor and add the following:
    ```bash
    MONGO_URI=your_mongo_database_connection_string   
    PORT=your_desired_port_number
    ```
+      
 - Replace 'your_mongo_database_connection_string' with your MongoDB connection URI.<br />
 - Replace 'your_desired_port_number' with a port number for your server.<br />
 
-
-### a. Running the project
-
-- After you have successfully set up the environment variables in the .env file, follow the below mentioned instructions.
-1. Make sure you're in the main project root folder [ travel-booking-agency ]: 
-
-2. Now navigate to the server (backend) folder and install dependancies:
+6. Install the dependancies
    ```bash
-   cd server
    npm i
    ```
 
-3. Run the express server now:
+7. Run the express server now:
    ```bash
    nodemon index.js
    ```
-   
-4. Now navigate to client (frontend) folder and install dependancies:
+
+8. Now navigate back to the project root folder and then to the client (frontend) folder and install dependancies:
    ```bash
    cd ../client
    npm i
    ```
 
-5. Add the following variables to your .env file in the client folder: Open the .env file in your preferred text editor and add the following:
+9. Now create a .env file here
+
+10. Add the following variables to your .env file in the client folder: Open the .env file and add these variables:
    ```bash
    REACT_APP_ADMIN_USERNAME=your_admin_username
    REACT_APP_ADMIN_PASSWORD=your_admin_password
@@ -76,8 +73,8 @@ A simple full stack web application which helps you to create bookings for tour 
   - Replace 'your_admin_username' with your desired username for the admin.<br />
   - Replace 'your_admin_password' with your desired password for the admin.<br />
 
-
-5. Run the React client here:
+  
+11. Run the React client here:
    ```bash
    npm run start
    ```
